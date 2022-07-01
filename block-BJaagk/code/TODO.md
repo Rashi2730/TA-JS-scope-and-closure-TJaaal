@@ -56,9 +56,9 @@ function add(a, b) {
   return a + b;
 } 
 
-let five = add(2, 3); // Answer invalid
-five = add; // Answer invalid
-five = five(10, 11); // Answer invalid
+let five = add(2, 3); // Answer valid 5
+five = add; // Answer valid
+five = five(10, 11); // Answer valid 21
 five = function () {
   return 'Hello';
 }; // Answer valid
@@ -78,7 +78,7 @@ Calling a function is to pass values  when you actually want to invoke the funct
 
 let result =  multiply(2,3);
 
-7. What is the similarities between function definition and function call?
+7. What is the similarities between function definition and function call?  // both are expressions
 
 8. Is the code below valid or invalid. Explain with reason.
 
@@ -87,7 +87,7 @@ function hello() {
   console.log('Hello World!');
 }
 
-hello.user = 'Sam'; // valid or invalid // invalid
+hello.user = 'Sam'; // valid or invalid // valid
 ```
 
 9. What is higher order function explain with an example.
