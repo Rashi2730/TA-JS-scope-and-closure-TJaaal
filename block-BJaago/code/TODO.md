@@ -31,7 +31,7 @@ var userMessage = sayHelloToUser('Bran');
 2.
 
 ```js
-function sayHi() {
+function sayHi() { // declaration 
   var name = 'Lydia';
   var age = 21;
   console.log(name);
