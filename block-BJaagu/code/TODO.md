@@ -9,23 +9,23 @@ var numA = 21,
 Find the output of the code snippets below:
 
 ```js
-console.log(numA + numB); //OUTPUT
+console.log(numA + numB); //OUTPUT  >>> numA not defined 
 let numA = 21,
   numB = 30;
-```
+```   
 
 Find the output of the code snippets below:
 
 ```js
 let numA = 21,
   numB = 30;
-console.log(numA + numB); //OUTPUT
+console.log(numA + numB); //OUTPUT >>> 51 
 ```
 
 Find the output of the code snippets below:
 
 ```js
-console.log(sayHello()); // OUTPUT
+console.log(sayHello()); // OUTPUT >>> Hello  undefined
 function sayHello() {
   console.log("Hey");
 }
@@ -38,7 +38,7 @@ Find the output of the code snippets below:
 
 ```js
 let username = "Tyrion";
-sayHello(); // OUTPUT
+sayHello(); // OUTPUT  >>> Tyrion 
 function sayHello() {
   console.log(username);
 }
@@ -61,7 +61,7 @@ let username = "Tyrion";
 sayHello(); // OUTPUT
 let sayHello = () => {
   console.log(username);
-};
+};   
 ```
 
 Find the output of the code snippets below:
