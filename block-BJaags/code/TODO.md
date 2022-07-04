@@ -1,6 +1,6 @@
 To create the execution context diagram consider the following:
 
-- Global and Function Execution Context
+- Global and Function Execution Context // ok 
 - Different Phases Of Execution Context
 - Var let and const
 
