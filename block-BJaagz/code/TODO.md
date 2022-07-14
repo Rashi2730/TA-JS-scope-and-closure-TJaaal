@@ -18,7 +18,7 @@ forEach(['Sam', 'Jon', 'Arya'], (name, i, arr) =>
 - It returns same size of array
 - It should work exactly like array `map` method
 
-```js
+```js /// 
 function map() {
   // Your code goes here
 }
