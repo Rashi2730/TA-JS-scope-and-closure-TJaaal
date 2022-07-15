@@ -4,19 +4,36 @@
 
 ```js
 // Your code goes here
+function outer(str){
+  let sayHello = function(){
+    alert("input");
+  }
+  sayHello();
+}
 ```
 
 2. Write a function `delay` that accepts two arguments, a callback and the wait for the time in milliseconds (1000 ms is 1 second). `delay` should return a function that, when invoked waits for the specified amount of time before executing. (Use setTimeout)
 
 ```js
 // Your code goes here
+
+function delay(time, cb){
+  return () => {
+    setTimeout(cb,time);
+  }
+}
+
 ```
 
 3. Write a function with a closure. The first function should only take one argument, someone's last name, and return the inner function. The returned `inner` function should take one more argument, someone's first name. When inner function when called it should console.log both the first name and the last name with a space.
 
 ```js
-function lastName() {
+function lastName(ln) {
   //  Your code goes here
+  function firstName(fn){
+    console.log(fn + " " + ln);
+  }
+  return firstName;
 }
 
 let lastNameLee = lastName('lee'); // logs nothing
@@ -35,6 +52,16 @@ lastNameLee('Lynne'); //logs 'Lynne Lee'
 ```js
 function storyWriter() {
   // Your code goes here
+  let word = "";
+  return {
+    addWords : function(str){
+      word += str;
+    }
+
+    eraseWords : function() {
+      word = " "; 
+    }
+  }
 }
 
 // Test
@@ -54,8 +81,14 @@ storyOfMyLife.erase(); // ''
 When `forEach` function is called it returns another function. When the returned function is called it returns the element from the array at specific index. Every time you call the returned function the value of index should increment.
 
 ```js
-function forEach() {
+function forEach(arr) {
   // Your code goes here
+  let index = 0;
+  function inner(){
+    return arr[index];
+    index++ ;
+  }
+  return inner();
 }
 
 let next = [1, 2, 3, 4, 5];
@@ -73,6 +106,10 @@ The returned function accepts a string `prefix` and returns `prefix` and `title`
 ```js
 function addDesignation(title) {
   // your code goes here
+  function inner(prefix) {
+    return prefix + " " + title;
+  }
+  return inner;
 }
 
 let sales = addDesignation('Salesman');
@@ -90,8 +127,9 @@ manager('Head'); // Head Manager
 - `current` will return the current salary returns the updated salary
 
 ```js
-function changeSalary() {
+function changeSalary(currentSal) {
   // Your code goes here
+  
 }
 
 let sam = changeSalary(2000);
