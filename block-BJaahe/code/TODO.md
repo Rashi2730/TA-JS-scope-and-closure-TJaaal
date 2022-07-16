@@ -6,7 +6,7 @@
 // Your code goes here
 function outer(str){
   let sayHello = function(){
-    alert("input");
+    alert(str);
   }
   sayHello();
 }
@@ -18,7 +18,7 @@ function outer(str){
 // Your code goes here
 
 function delay(time, cb){
-  return () => {
+  return function() => {
     setTimeout(cb,time);
   }
 }
@@ -56,10 +56,11 @@ function storyWriter() {
   return {
     addWords : function(str){
       word += str;
-    }
-
+      return word;
+    },
     eraseWords : function() {
-      word = " "; 
+      word = ""; 
+      return word;
     }
   }
 }
@@ -84,14 +85,12 @@ When `forEach` function is called it returns another function. When the returned
 function forEach(arr) {
   // Your code goes here
   let index = 0;
-  function inner(){
-    return arr[index];
-    index++ ;
+  return function(){
+    return arr[index++];
   }
-  return inner();
 }
 
-let next = [1, 2, 3, 4, 5];
+let next = forEach([1, 2, 3, 4, 5]);
 next(); // 1
 next(); // 2
 next(); // 3
@@ -129,7 +128,23 @@ manager('Head'); // Head Manager
 ```js
 function changeSalary(currentSal) {
   // Your code goes here
-  
+  let updatedSal = 0;
+  return {
+    raise : function(){
+      updatedSal = currentSal + 500;
+      return updatedSal;
+    },
+    lower : function(){
+      updatedSal = currentSal - 500;
+      return updatedSal;
+
+    },
+    current : function(){
+      updatedSal = currentSal;
+      return updatedSal;
+
+    }
+  }
 }
 
 let sam = changeSalary(2000);
@@ -147,6 +162,21 @@ arya.lower(); // 3500
 
 ```js
 // Your code goes here
+function nameFactory(firstName, lastName){
+return {
+  getFullName : function(){
+    return firstName + " " + lastName;
+  },
+  setFirstName : function(fname){
+    firstName = fname;
+    return firstName + " " + lastName;
+  },
+  setLastName : function(lname){
+    lastName = lname;
+    return firstName + " " + lastName;
+  }
+}
+}
 
 let arya = nameFactory('Arya', 'Stark');
 arya.getFullName(); // "Arya Stark"
@@ -159,8 +189,11 @@ arya.setLastName('Lannister'); // "Jon Lannister"
 The returned function accepts a string (children) and returns the children with the tag you passed.
 
 ```js
-function createTag() {
+function createTag(tag) {
   // your code goes here
+  return function(str){
+    return "<" + tag + "> " + str + " </" + tag + ">"
+  }
 }
 
 let bold = createTag('b');
