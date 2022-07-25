@@ -7,23 +7,27 @@ For Example:
 1.
 
 ```js
+
 var username = 'Arya';
 let brothers = ['John', 'Ryan', 'Bran'];
-
-console.log(username, brothers[0]);
 
 function sayHello(name) {
   return `Hello ${name}`;
 }
 
+
 let message = sayHello(username);
 var nextMessage = sayHello('Test');
+
+console.log(username, brothers[0]);
+
 ```
 
-<!-- Answer -->
+<!-- Answer --> // Arya John
 
 ```js
 // Declaration Phase
+
 var username = undefined;
 let brothers;
 
@@ -48,7 +52,6 @@ nextMessage = sayHello('Test');
 2.
 
 ```js
-console.log(username, numbers);
 
 var username = 'Arya';
 let number = 21;
@@ -59,18 +62,31 @@ function sayHello(name) {
 
 let message = sayHello(username);
 var nextMessage = sayHello('Test');
+console.log(username, number);
+
 ```
 
-<!-- Answer -->
+<!-- Answer --> // Arya 21
 
 ```js
 // Your code goes here
+
+// Declaration Phase 
+
+var username = 'Arya';
+let number = 21;
+
+function sayHello(name) {
+  return `Hello ${name}`;
+}
+
+
+
 ```
 
 3.
 
 ```js
-console.log(username, numbers);
 let username = 'Arya';
 let number = 21;
 
@@ -80,9 +96,11 @@ let sayHello = function (name) {
 
 let message = sayHello(username);
 var nextMessage = sayHello('Test');
+console.log(username, number);
+
 ```
 
-<!-- Answer -->
+<!-- Answer --> // Arya 21
 
 ```js
 // Your code goes here
