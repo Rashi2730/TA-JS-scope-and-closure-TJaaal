@@ -31,21 +31,17 @@ The returned function either accepts two parameter or one parameter.
 ```js
 function multipleCensor() {
   //  Your code goes here
-  return function(str1,str2){
-    let arr = [];
-    arr.push(str1,str2);
-  }
-  return function(str){
-    if(str.includes(`forget`)){
-      str.replace(`forget`,`remember`);
+  let arr = [];
+  return function (...args){
+    if(args.length == 2){
+      arr.push(args);
     }
-    else if(str.includes(`never`)){
-      str.replace(`never`,`always`);
+    else if(args.length == 1){
+      arr.forEach((opp) => {
+      args[0] = args[0].replace(opp[0],opp[1]);
+      });
+      return args[0];
     }
-    else if(str.includes(`hurt you`)){
-      str.replace(`hurt you`,`love you`);
-    }
-
   }
 }
 
@@ -72,8 +68,17 @@ The returned function accepts one parameter.
 ```js
 function createCache(cb, str) {
   // Your code goes here
-  return function(){
-    
+  let obj = {};
+  let value = 0;
+  return function(para){
+    if(para !== str){
+      value = cb(para);
+      obj[para] = value;
+      return value;
+    }
+    else {
+      return obj;
+    }
   }
 }
 
@@ -95,6 +100,19 @@ addCache('foo'); // {12: 22, 100: 110, 1: 11}
 ```js
 function createCache() {
   // Your code goes here
+  let obj = {};
+  let value = 0;
+  return function(para){
+    if(para !== str && !obj[ps]){
+      value = cb(para);
+      obj[para] = value;
+      return value;
+    }
+    else {
+      return obj;
+    }
+  }
+
 }
 
 function add10(num) {
