@@ -3,6 +3,13 @@
 ```js
 function once(cb) {
   // your code goes here
+  let count = 0;
+  return () => {
+    count++ ;
+    if(count == 1){
+      return cb();
+    }
+  }
 }
 
 // TEST
@@ -11,14 +18,21 @@ function sayHello() {
 }
 let log = once(sayHello);
 log(); // alert message "You can only call me once!"
-log(); // return undefinde (can't be called twice)
+log(); // return undefined (can't be called twice)
 ```
 
 2. Change the above function in such a way that the function accepts two parameter a callback function and parameter for the callback function. When calling the function pass the parameters.
 
 ```js
-function once(cb) {
+function once(cb, para) {
   // your code goes here
+    let count = 0;
+  return () => {
+    count++ ;
+    if(count == 1){
+      return cb(para);
+    }
+  }
 }
 
 // TEST
@@ -34,8 +48,16 @@ log(); // return undefinde (can't be called twice)
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/rest_parameters
 
 ```js
-function once(cb) {
+function once(...n) {
   // your code goes here
+  let count = 0;
+  return () => {
+    count++ ;
+    if(count == 1){
+      let frstEle = n.shift();
+      frstEle(n.join(" "));
+  }
+}
 }
 
 // TEST
@@ -47,7 +69,7 @@ log(); // return undefinde (can't be called twice)
 4. Create a new function `nTimes` whose 1st parameter is a callback function, 2nd parameter is the number of times the function should be called and 3rd ... nth parameter should be passed to the callback function.
 
 ```js
-function nTimes(cb, times, ...rest) {
+function nTimes(cb, times,rest) {
   // your code goes here
 }
 
